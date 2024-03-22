@@ -8,7 +8,7 @@ OBJ = $(SRC:.c=.o)
 $(NAME): $(OBJ)
 	ar rcs $@ $^
 
-%o.: %c. ft_printf.h
+%.o: %.c ft_printf.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
