@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lnicolos <lnicolos@student.42lausan>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/03 18:20:50 by lnicolos          #+#    #+#             */
+/*   Updated: 2024/04/03 19:43:38 by lnicolos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 #include <stdarg.h>
 
@@ -19,6 +31,8 @@ int	print_str(char *str)
 	return (i);
 }
 
+
+
 int	print_format(char letter, va_list ap)
 {
 	int count;
@@ -28,6 +42,15 @@ int	print_format(char letter, va_list ap)
 		count = print_char(va_arg(ap, int));
 	else if (letter == 's')
 		count = print_str(va_arg(ap, char *));
+	else if (letter == 'p') //same like %x + '0x'
+
+	else if (letter == 'd' || letter == 'i')
+
+	else if (letter == 'u')
+
+	else if (letter == 'x' || letter == 'X')
+	
+	else if (letter == '%')
 
 	return (count);
 }
@@ -39,8 +62,6 @@ int	ft_printf(const char *format, ...)
 	va_list ap;
 
 	va_start(ap, format);
-	if(format == NULL)
-		return (0);
 	i = 0;
 	count = 0;
 	while(format[i] != '\0')
