@@ -6,7 +6,7 @@
 /*   By: lnicolos <lnicolos@student.42lausan>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 18:20:50 by lnicolos          #+#    #+#             */
-/*   Updated: 2024/04/03 19:43:38 by lnicolos         ###   ########.fr       */
+/*   Updated: 2024/04/09 14:37:35 by lnicolos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,8 @@ int	print_format(char letter, va_list ap)
 		count += print_hexa((long)(va_arg(ap, unsigned int)), letter);
 	else if (letter == '%')
 		count += print_char('%');
-
+	else
+		
 	return (count);
 }
 
@@ -151,10 +152,10 @@ int main(void)
 {
 	int count = 0;
 
-	count = ft_printf("exa et decimal : %x \n", -1);
+	count = ft_printf("exa et decimal : %x %x \n", -1, 42);
 	printf("longueure ft_printf %d\n\n", count);
 
-	count = printf("exa et decimal : %x \n", -1);
+	count = printf("exa et decimal : %x %x \n", -1, 42);
 	printf("longueure printf %d\n", count);
 
 
