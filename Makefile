@@ -2,7 +2,7 @@ NAME = libftprintf.a
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 PROJECT_NAME = ft_libft
-SRC = ft_printf.c
+SRC = ft_printf.c utils.c
 OBJ = $(SRC:.c=.o)
 
 $(NAME): $(OBJ)
