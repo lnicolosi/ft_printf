@@ -9,5 +9,7 @@ int	ft_printf(const char* format, ...);
 int	print_char(char c);
 int print_str(char *str);
 int	print_format(char letter, va_list ap);
+int	print_digit(long n, int base);
+int print_hexa(long n, char letter);
 
 #endif
