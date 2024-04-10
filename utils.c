@@ -6,7 +6,7 @@
 /*   By: lnicolos <lnicolos@student.42lausan>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 15:17:54 by lnicolos          #+#    #+#             */
-/*   Updated: 2024/04/09 15:48:06 by lnicolos         ###   ########.fr       */
+/*   Updated: 2024/04/10 18:22:01 by lnicolos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	print_str(char *str)
 {
 	int	i;
 
+	if (!str)
+		return (write(1, "(null)", 6));
 	i = 0;
 	while (str[i])
 	{
@@ -50,6 +52,28 @@ int	print_digit(long n, int base)
 	}
 }
 
+int	ft_print_pointer(unsigned long ptr)
+{
+	char	*digits;
+	char	buffer[18];
+	int		count;
+	int		i;
+
+	count = 0;
+	digits = "0123456789abcdef";
+	buffer[0] = '0';
+	buffer[1] = 'x';
+	i = 17;
+	while (ptr != 0)
+	{
+		buffer[i--] = digits[ptr % 16];
+		ptr /= 16;
+	}
+	while (i > 1) 
+		buffer[i--] = '0';
+	return (write(1, buffer, 18));
+}
+
 int	print_hexa(long n, char letter)
 {
 	int		count;
@@ -65,7 +89,7 @@ int	print_hexa(long n, char letter)
 	}
 	else if (n < 16)
 	{
-		if (letter == 'x')
+		if (letter == 'x' || letter == 'p')
 			return (print_char(minus[n]));
 		else
 			return (print_char(majus[n]));

@@ -6,7 +6,7 @@
 /*   By: lnicolos <lnicolos@student.42lausan>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 18:20:50 by lnicolos          #+#    #+#             */
-/*   Updated: 2024/04/09 15:48:44 by lnicolos         ###   ########.fr       */
+/*   Updated: 2024/04/10 18:16:58 by lnicolos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ int	print_format(char letter, va_list ap)
 		count += print_str(va_arg(ap, char *));
 	else if (letter == 'p')
 	{
-		count += write(1, "0x", 2);
-		count += print_digit((long)(va_arg(ap, unsigned int)), 16);
+		//count += write(1, "0x", 2);
+		//count += print_digit((long)(va_arg(ap, unsigned int)), 16);
+		count += ft_print_pointer(va_arg(ap, unsigned long int));
 	}
 	else if (letter == 'd' || letter == 'i')
 		count += print_digit((long)(va_arg(ap, int)), 10);
@@ -62,16 +63,16 @@ int	ft_printf(const char *format, ...)
 	va_end(ap);
 	return (count);
 }
-/*int main(void)
+int main(void)
 {
 	int count = 0;
 
-	count = ft_printf("test1: %s", "salut");
+	count = ft_printf(" %p %p ", -1, LONG_MAX);
 	printf("longueure ft_printf %d\n\n", count);
 
-	count = printf("test1: %s", "salut");
+	count = printf(" %p"" %p ", -1, LONG_MAX);
 	printf("longueure printf %d\n", count);
 
 
 	return 0;
-	}*/
+	}
