@@ -6,7 +6,7 @@
 /*   By: lnicolos <lnicolos@student.42lausan>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 15:17:54 by lnicolos          #+#    #+#             */
-/*   Updated: 2024/04/10 18:22:01 by lnicolos         ###   ########.fr       */
+/*   Updated: 2024/04/12 17:27:12 by lnicolos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,26 +52,15 @@ int	print_digit(long n, int base)
 	}
 }
 
-int	ft_print_pointer(unsigned long ptr)
+int	print_ptr(unsigned long n)
 {
-	char	*digits;
-	char	buffer[18];
-	int		count;
-	int		i;
+	int	count;
 
 	count = 0;
-	digits = "0123456789abcdef";
-	buffer[0] = '0';
-	buffer[1] = 'x';
-	i = 17;
-	while (ptr != 0)
-	{
-		buffer[i--] = digits[ptr % 16];
-		ptr /= 16;
-	}
-	while (i > 1) 
-		buffer[i--] = '0';
-	return (write(1, buffer, 18));
+	if (n > 15)
+		count += print_ptr(n / 16);
+	count += print_char("0123456789abcdef"[n % 16]);
+	return (count);
 }
 
 int	print_hexa(long n, char letter)
